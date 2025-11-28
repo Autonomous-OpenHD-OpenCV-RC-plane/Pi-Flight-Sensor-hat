@@ -10460,17 +10460,6 @@
 		)
 		(uuid "544a6652-092f-4878-a24e-1185e6f007f3")
 	)
-	(text "Reset Pin\ncannot be\ndriven HIGH"
-		(exclude_from_sim no)
-		(at 306.832 30.734 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "6876219a-7e5c-4603-a429-d3f6ba62c1b1")
-	)
 	(text "SPI2\n"
 		(exclude_from_sim no)
 		(at 72.898 77.724 0)
@@ -12039,16 +12028,6 @@
 	)
 	(wire
 		(pts
-			(xy 304.8 31.75) (xy 304.8 33.02)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3d0283e1-3d1e-4a1f-ba3b-1f36224eb469")
-	)
-	(wire
-		(pts
 			(xy 290.83 204.47) (xy 287.02 204.47)
 		)
 		(stroke
@@ -13106,16 +13085,6 @@
 			(type default)
 		)
 		(uuid "a71d09e5-853f-429a-bd0d-fd066206b55a")
-	)
-	(wire
-		(pts
-			(xy 304.8 33.02) (xy 306.07 33.02)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a7c37437-5593-4b56-9c5c-a2ad70c9216d")
 	)
 	(wire
 		(pts
@@ -15231,28 +15200,6 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "GPS_RESET"
-		(shape input)
-		(at 306.07 33.02 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "67c68dd2-16f4-4ef3-a949-44f6f7e740a6")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 319.5174 33.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 				(hide yes)
 			)
 		)
@@ -19350,93 +19297,6 @@
 			(project "AFS2.1_Betelgeuse"
 				(path "/be554a08-147d-45c0-b8f6-ea3dd923a785"
 					(reference "#PWR?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Small_US")
-		(at 304.8 29.21 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "27ad36f1-67af-4363-b4ca-c2121092ca4c")
-		(property "Reference" "R22"
-			(at 299.72 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "10k"
-			(at 299.72 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 304.8 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 304.8 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 304.8 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Generic"
-			(at 304.8 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Part #" "Generic 0603 10k 1% Resistor"
-			(at 304.8 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "929d06c9-7f1c-41ab-937a-65afaeefd3b5")
-		)
-		(pin "2"
-			(uuid "417cedac-18e8-41aa-9c26-2bcdae536977")
-		)
-		(instances
-			(project "rocket2-afs"
-				(path "/bb02b74a-6e6c-4d52-9615-6a7971a5afcd"
-					(reference "R22")
 					(unit 1)
 				)
 			)
@@ -25078,71 +24938,6 @@
 			(project "AFS2.1_Betelgeuse"
 				(path "/be554a08-147d-45c0-b8f6-ea3dd923a785"
 					(reference "D?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3.3V")
-		(at 304.8 26.67 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "77b19a88-d8b5-4e49-895f-72e8028a8ead")
-		(property "Reference" "#PWR075"
-			(at 304.8 30.48 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 304.8 22.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 304.8 26.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 304.8 26.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 304.8 26.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "fee986f2-7a57-4b3b-bc4a-b777757846d0")
-		)
-		(instances
-			(project "rocket2-afs"
-				(path "/bb02b74a-6e6c-4d52-9615-6a7971a5afcd"
-					(reference "#PWR075")
 					(unit 1)
 				)
 			)

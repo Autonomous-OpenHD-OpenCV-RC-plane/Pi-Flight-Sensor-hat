@@ -637,333 +637,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "CMT-7525S-SMT:CMT-7525S-SMT"
-			(pin_names
-				(offset 1.016)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "LS1"
-				(at 3.81 1.0161 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "CMT-7525S-SMT"
-				(at 3.81 -1.5239 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" "CMT-7525S-SMT:CUI_CMT-7525S-SMT"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "MF" "Same Sky"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "Description_1" "7.5 mm, 3.6 Vo-p, 90 dB, Surface Mount (SMT), Magnetic Audio Transducer Buzzer"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "Package" "Package"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "Price" "None"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "SnapEDA_Link" "https://www.snapeda.com/parts/CMT-7525S-SMT-TR/Same+Sky/view-part/?ref=snap"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "MP" "CMT-7525S-SMT-TR"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "Availability" "In Stock"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "Check_prices" "https://www.snapeda.com/parts/CMT-7525S-SMT-TR/Same+Sky/view-part/?ref=eda"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(symbol "CMT-7525S-SMT_0_0"
-				(polyline
-					(pts
-						(xy -0.635 1.27) (xy 0 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.635 -1.27) (xy -0.635 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 1.27) (xy 0 2.54)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 1.27) (xy 0.635 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -1.27) (xy -0.635 -1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -1.27) (xy 0 -2.54)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.635 1.27) (xy 0.635 -1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.635 1.27) (xy 1.905 3.175)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.635 -1.27) (xy 0 -1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.905 3.175) (xy 1.905 -3.175)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.905 -3.175) (xy 0.635 -1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "CMT-7525S-SMT_1_0"
-				(pin passive line
-					(at 0 3.81 270)
-					(length 2.032)
-					(name "~"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number ""
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 2.032)
-					(name "~"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number ""
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-			)
-			(symbol "CMT-7525S-SMT_1_1"
-				(text "+"
-					(at -1.9089 1.2726 0)
-					(effects
-						(font
-							(size 0.9906 0.9906)
-						)
-						(justify left bottom)
-					)
-				)
-				(text "-"
-					(at -0.508 -2.54 900)
-					(effects
-						(font
-							(size 0.762 0.762)
-						)
-						(justify left bottom)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Connector:Conn_01x02_Pin"
 			(pin_names
 				(offset 1.016)
@@ -2409,173 +2082,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Diode:1N4148WT"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "D"
-				(at 0 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "1N4148WT"
-				(at 0 -2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "Diode_SMD:D_SOD-523"
-				(at 0 -4.445 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://www.diodes.com/assets/Datasheets/ds30396.pdf"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "75V 0.15A Fast switching Diode, SOD-523"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Sim.Device" "D"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Sim.Pins" "1=K 2=A"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "diode"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "D*SOD?523*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "1N4148WT_0_1"
-				(polyline
-					(pts
-						(xy -1.27 1.27) (xy -1.27 -1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 0) (xy -1.27 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "1N4148WT_1_1"
-				(pin passive line
-					(at -3.81 0 0)
-					(length 2.54)
-					(name "K"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 3.81 0 180)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Diode:SS34"
 			(pin_numbers
 				(hide yes)
@@ -3008,107 +2514,6 @@
 				)
 			)
 			(symbol "GND_12_1_1"
-				(pin power_in line
-					(at 0 0 270)
-					(length 0)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "GND_9"
-			(power)
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "#PWR"
-				(at 0 -6.35 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "GND"
-				(at 0 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "global power"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "GND_9_0_1"
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "GND_9_1_1"
 				(pin power_in line
 					(at 0 0 270)
 					(length 0)
@@ -3937,211 +3342,6 @@
 						(effects
 							(font
 								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Transistor_BJT:BC547"
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "Q"
-				(at 5.08 1.905 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "BC547"
-				(at 5.08 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
-				(at 5.08 -1.905 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-						(italic yes)
-					)
-					(justify left)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://www.onsemi.com/pub/Collateral/BC550-D.pdf"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-					(hide yes)
-				)
-			)
-			(property "Description" "0.1A Ic, 45V Vce, Small Signal NPN Transistor, TO-92"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "NPN Transistor"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "TO?92*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "BC547_0_1"
-				(polyline
-					(pts
-						(xy -2.54 0) (xy 0.635 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.635 1.905) (xy 0.635 -1.905)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 1.27 0)
-					(radius 2.8194)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "BC547_1_1"
-				(polyline
-					(pts
-						(xy 0.635 0.635) (xy 2.54 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.635 -0.635) (xy 2.54 -2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 -1.778) (xy 1.778 -1.27) (xy 2.286 -2.286) (xy 1.27 -1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(pin input line
-					(at -5.08 0 0)
-					(length 2.54)
-					(name "B"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 5.08 270)
-					(length 2.54)
-					(name "C"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 -5.08 90)
-					(length 2.54)
-					(name "E"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
 							)
 						)
 					)
@@ -10460,17 +9660,6 @@
 		)
 		(uuid "544a6652-092f-4878-a24e-1185e6f007f3")
 	)
-	(text "Reset Pin\ncannot be\ndriven HIGH"
-		(exclude_from_sim no)
-		(at 306.832 30.734 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "6876219a-7e5c-4603-a429-d3f6ba62c1b1")
-	)
 	(text "SPI2\n"
 		(exclude_from_sim no)
 		(at 72.898 77.724 0)
@@ -10615,9 +9804,9 @@
 		)
 		(uuid "aeb78e0c-bdde-4215-975e-4ae16dc83c2d")
 	)
-	(text "LEDS + PIEZO BUZZER"
+	(text "LEDS\n"
 		(exclude_from_sim no)
-		(at 208.534 18.034 0)
+		(at 223.266 17.78 0)
 		(effects
 			(font
 				(size 2 2)
@@ -10838,12 +10027,6 @@
 		(uuid "4a20abd0-51f1-4660-bd88-f6246dd93da6")
 	)
 	(junction
-		(at 229.87 73.66)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "4c0c241a-5f0e-45fc-85a7-ef610bf93466")
-	)
-	(junction
 		(at 264.16 109.22)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -10938,12 +10121,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "715e5126-c5d3-4808-8546-9ad72bbccec6")
-	)
-	(junction
-		(at 229.87 81.28)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "71cd7af1-f285-40ac-b377-cfb65e70b2f5")
 	)
 	(junction
 		(at 392.43 41.91)
@@ -12039,16 +11216,6 @@
 	)
 	(wire
 		(pts
-			(xy 304.8 31.75) (xy 304.8 33.02)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3d0283e1-3d1e-4a1f-ba3b-1f36224eb469")
-	)
-	(wire
-		(pts
 			(xy 290.83 204.47) (xy 287.02 204.47)
 		)
 		(stroke
@@ -12877,16 +12044,6 @@
 		)
 		(uuid "8c827acf-0e20-4f72-80f2-1b35ee14398c")
 	)
-	(wire
-		(pts
-			(xy 229.87 72.39) (xy 229.87 73.66)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8c8b2840-30a0-4ebf-9256-957df65ef3d6")
-	)
 	(polyline
 		(pts
 			(xy 226.06 137.16) (xy 226.06 181.61)
@@ -12966,16 +12123,6 @@
 			(type default)
 		)
 		(uuid "958e8adc-633e-4942-99fa-5f9b70ade390")
-	)
-	(wire
-		(pts
-			(xy 224.79 81.28) (xy 229.87 81.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "97b50b63-ab27-4d9e-9257-e8ab623c41d8")
 	)
 	(wire
 		(pts
@@ -13059,26 +12206,6 @@
 	)
 	(wire
 		(pts
-			(xy 224.79 73.66) (xy 229.87 73.66)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a480e02a-da03-4f0c-89d8-632abbb1f223")
-	)
-	(wire
-		(pts
-			(xy 220.98 87.63) (xy 222.25 87.63)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a4f26384-4a39-44e9-bab3-1b3458969c94")
-	)
-	(wire
-		(pts
 			(xy 161.29 265.43) (xy 167.64 265.43)
 		)
 		(stroke
@@ -13106,16 +12233,6 @@
 			(type default)
 		)
 		(uuid "a71d09e5-853f-429a-bd0d-fd066206b55a")
-	)
-	(wire
-		(pts
-			(xy 304.8 33.02) (xy 306.07 33.02)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a7c37437-5593-4b56-9c5c-a2ad70c9216d")
 	)
 	(wire
 		(pts
@@ -13476,16 +12593,6 @@
 			(type default)
 		)
 		(uuid "c7d0ae9e-e016-40ee-9b54-14cae2c61b74")
-	)
-	(wire
-		(pts
-			(xy 229.87 82.55) (xy 229.87 81.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c83ef517-1e09-4e7f-b72c-ebccec7ea378")
 	)
 	(wire
 		(pts
@@ -14324,28 +13431,6 @@
 		(uuid "193f925d-dcc4-4c8c-b569-b955d88b0c02")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 94.6066 72.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "EN_5V"
-		(shape input)
-		(at 85.09 67.31 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "19b5a677-cb76-4614-b1e9-379a32fc857b")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 93.8204 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15235,28 +14320,6 @@
 			)
 		)
 	)
-	(global_label "GPS_RESET"
-		(shape input)
-		(at 306.07 33.02 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "67c68dd2-16f4-4ef3-a949-44f6f7e740a6")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 319.5174 33.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "VBUS"
 		(shape input)
 		(at 336.55 217.17 90)
@@ -16040,28 +15103,6 @@
 		(uuid "a3b79c77-3331-44e6-a504-8719b30afa1c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 338.5843 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "BUZZER"
-		(shape input)
-		(at 215.9 87.63 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "a4499e02-fcac-4eb8-87cf-d8e470f1e653")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 205.4763 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16942,6 +15983,28 @@
 		(uuid "dfa3fef4-aa96-4277-b69a-e033b66d88f5")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 99.3237 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "EN_SERVO"
+		(shape input)
+		(at 85.09 67.31 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e005850f-6107-4962-93b4-d1cea3d9582e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 97.5699 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19356,93 +18419,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R_Small_US")
-		(at 304.8 29.21 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "27ad36f1-67af-4363-b4ca-c2121092ca4c")
-		(property "Reference" "R22"
-			(at 299.72 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "10k"
-			(at 299.72 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 304.8 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 304.8 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 304.8 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Generic"
-			(at 304.8 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Part #" "Generic 0603 10k 1% Resistor"
-			(at 304.8 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "929d06c9-7f1c-41ab-937a-65afaeefd3b5")
-		)
-		(pin "2"
-			(uuid "417cedac-18e8-41aa-9c26-2bcdae536977")
-		)
-		(instances
-			(project "rocket2-afs"
-				(path "/bb02b74a-6e6c-4d52-9615-6a7971a5afcd"
-					(reference "R22")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 311.15 93.98 90)
 		(unit 1)
@@ -20298,72 +19274,6 @@
 			(project "rocket3-afs "
 				(path "/bb02b74a-6e6c-4d52-9615-6a7971a5afcd"
 					(reference "Q6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_name "GND_9")
-		(lib_id "power:GND")
-		(at 229.87 92.71 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "31ed1fdf-276c-4eef-9573-1480ad6427a7")
-		(property "Reference" "#PWR043"
-			(at 229.87 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 229.87 97.028 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 229.87 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 229.87 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 229.87 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "3a44d53b-1c32-4d23-bb76-b7c247f3e00e")
-		)
-		(instances
-			(project ""
-				(path "/bb02b74a-6e6c-4d52-9615-6a7971a5afcd"
-					(reference "#PWR043")
 					(unit 1)
 				)
 			)
@@ -22139,7 +21049,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "27k"
+		(property "Value" "33k"
 			(at 38.1 199.39 90)
 			(effects
 				(font
@@ -24002,82 +22912,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Transistor_BJT:BC547")
-		(at 227.33 87.63 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "6e9b949b-f6c5-4798-a4d4-ae74aab74d2d")
-		(property "Reference" "Q3"
-			(at 232.41 86.3599 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "BC547"
-			(at 232.41 88.8999 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
-			(at 232.41 89.535 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-					(italic yes)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.onsemi.com/pub/Collateral/BC550-D.pdf"
-			(at 227.33 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Description" "0.1A Ic, 45V Vce, Small Signal NPN Transistor, TO-92"
-			(at 227.33 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "7c079030-c13d-4b4b-bd0e-9d52b3cda3ef")
-		)
-		(pin "3"
-			(uuid "059c4f5f-3a05-437b-807e-f590ab0bb6df")
-		)
-		(pin "2"
-			(uuid "44fe0daf-51f5-4538-95d2-84ff102fde9c")
-		)
-		(instances
-			(project ""
-				(path "/bb02b74a-6e6c-4d52-9615-6a7971a5afcd"
-					(reference "Q3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R_Small_US")
 		(at 250.19 204.47 0)
 		(unit 1)
@@ -25078,71 +23912,6 @@
 			(project "AFS2.1_Betelgeuse"
 				(path "/be554a08-147d-45c0-b8f6-ea3dd923a785"
 					(reference "D?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3.3V")
-		(at 304.8 26.67 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "77b19a88-d8b5-4e49-895f-72e8028a8ead")
-		(property "Reference" "#PWR075"
-			(at 304.8 30.48 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 304.8 22.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 304.8 26.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 304.8 26.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 304.8 26.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "fee986f2-7a57-4b3b-bc4a-b777757846d0")
-		)
-		(instances
-			(project "rocket2-afs"
-				(path "/bb02b74a-6e6c-4d52-9615-6a7971a5afcd"
-					(reference "#PWR075")
 					(unit 1)
 				)
 			)
@@ -26408,71 +25177,6 @@
 			(project "AFS2.1_Betelgeuse"
 				(path "/be554a08-147d-45c0-b8f6-ea3dd923a785"
 					(reference "#PWR?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3.3V")
-		(at 229.87 72.39 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "919b950a-b018-4b77-9a2d-eefb389d80bc")
-		(property "Reference" "#PWR042"
-			(at 229.87 76.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 229.87 68.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 229.87 72.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 229.87 72.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 229.87 72.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "3829a98e-cdc6-4ad2-835c-e6bdaccc2399")
-		)
-		(instances
-			(project "rocket3-afs "
-				(path "/bb02b74a-6e6c-4d52-9615-6a7971a5afcd"
-					(reference "#PWR042")
 					(unit 1)
 				)
 			)
@@ -31143,7 +29847,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "6k"
+		(property "Value" "10k"
 			(at 46.99 199.39 90)
 			(effects
 				(font
@@ -31531,243 +30235,6 @@
 			(project "rocket2-afs"
 				(path "/bb02b74a-6e6c-4d52-9615-6a7971a5afcd"
 					(reference "#PWR020")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Diode:1N4148WT")
-		(at 224.79 77.47 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "cbf17745-13de-4e32-b7a0-5d3361432314")
-		(property "Reference" "D6"
-			(at 220.218 76.962 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "1N4148WT"
-			(at 213.36 78.994 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
-			(at 220.345 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.diodes.com/assets/Datasheets/ds30396.pdf"
-			(at 224.79 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "75V 0.15A Fast switching Diode, SOD-523"
-			(at 224.79 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "D"
-			(at 224.79 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 224.79 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "fc2fd619-3c2e-4dae-90e7-a7f9d4c921fc")
-		)
-		(pin "2"
-			(uuid "f04c263a-1753-4391-ba53-4085abceff18")
-		)
-		(instances
-			(project ""
-				(path "/bb02b74a-6e6c-4d52-9615-6a7971a5afcd"
-					(reference "D6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "CMT-7525S-SMT:CMT-7525S-SMT")
-		(at 229.87 77.47 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "cd289441-a822-4684-b989-07a052bd253a")
-		(property "Reference" "LS1"
-			(at 235.458 75.692 0)
-			(effects
-				(font
-					(size 1.016 1.016)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "CMT-7525S-SMT"
-			(at 245.872 77.724 0)
-			(effects
-				(font
-					(size 1.016 1.016)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "CMT-7525S-SMT:CUI_CMT-7525S-SMT"
-			(at 229.87 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.sameskydevices.com/product/resource/cmt-7525s-smt-tr.pdf?srsltid=AfmBOoqpmf1uT2TcXrE6aSRyJFagB1oyyOnDb1P2jGqgF2oCIt-5rGJk"
-			(at 229.87 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 229.87 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MF" "Same Sky"
-			(at 229.87 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Description_1" "7.5 mm, 3.6 Vo-p, 90 dB, Surface Mount (SMT), Magnetic Audio Transducer Buzzer"
-			(at 229.87 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Package" "Package"
-			(at 229.87 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Price" "None"
-			(at 229.87 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "SnapEDA_Link" "https://www.snapeda.com/parts/CMT-7525S-SMT-TR/Same+Sky/view-part/?ref=snap"
-			(at 229.87 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "MP" "CMT-7525S-SMT-TR"
-			(at 229.87 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Availability" "In Stock"
-			(at 229.87 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Check_prices" "https://www.snapeda.com/parts/CMT-7525S-SMT-TR/Same+Sky/view-part/?ref=eda"
-			(at 229.87 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(pin ""
-			(uuid "844cfbaf-3e90-48b3-9291-2713958e844b")
-		)
-		(pin ""
-			(uuid "c6767a80-0662-4778-bc22-cd1b4b0936d9")
-		)
-		(instances
-			(project ""
-				(path "/bb02b74a-6e6c-4d52-9615-6a7971a5afcd"
-					(reference "LS1")
 					(unit 1)
 				)
 			)
@@ -35137,73 +33604,6 @@
 			(project "AFS2.1_Betelgeuse"
 				(path "/be554a08-147d-45c0-b8f6-ea3dd923a785"
 					(reference "R?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Small_US")
-		(at 218.44 87.63 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "fb1337fe-205b-45d8-a40e-a791e6bc02fc")
-		(property "Reference" "R11"
-			(at 218.186 82.55 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "180"
-			(at 218.186 85.09 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 218.44 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 218.44 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor, small US symbol"
-			(at 218.44 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "62b88feb-93bd-4669-a0d2-647a92790c23")
-		)
-		(pin "2"
-			(uuid "f435a267-c939-44ae-be93-b54a976df582")
-		)
-		(instances
-			(project ""
-				(path "/bb02b74a-6e6c-4d52-9615-6a7971a5afcd"
-					(reference "R11")
 					(unit 1)
 				)
 			)

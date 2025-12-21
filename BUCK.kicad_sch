@@ -2084,7 +2084,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor, small US symbol"
 			(at 157.48 55.88 0)
 			(effects
 				(font
@@ -2257,6 +2257,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 74.93 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part #" "MP2338GTL-P"
 			(at 74.93 50.8 0)
 			(effects
 				(font
@@ -2758,7 +2767,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.digikey.com/en/products/detail/tdk-corporation/VLS6045EX-6R8M/5287380"
+		(property "Datasheet" "https://product.tdk.com/en/system/files/dam/doc/product/inductor/inductor/smd/catalog/inductor_commercial_power_vls6045ex_en.pdf"
 			(at 127 53.34 0)
 			(effects
 				(font
@@ -2769,6 +2778,15 @@
 		)
 		(property "Description" "Inductor, small symbol"
 			(at 127 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part #" "VLS6045EX-6R8M"
+			(at 127 53.34 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2970,7 +2988,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "BLUE"
+		(property "Value" "BLUE_LED"
 			(at 154.686 64.008 90)
 			(effects
 				(font

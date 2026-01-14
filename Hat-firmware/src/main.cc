@@ -19,6 +19,9 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "usb_device.h"
+#include "altimeter_ms5607_spi.h"
+#include "imu_bmi088_spi.h"
+#include "memory_w25q1128jv_spi.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -57,6 +60,15 @@ UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN PV */
+/* Memory initalised */
+MemoryW25q1128jvSpi memory(&hspi3, MEM_CS_GPIO_Port, MEM_CS_Pin, MEM_WP_GPIO_Port, MEM_WP_Pin, MEM_HOLD_GPIO_Port, MEM_HOLD_Pin);
+
+/* Altimeter initialised */
+AltimeterMs5607Spi  altimeter(&hspi2, ALT_CS_GPIO_Port, ALT_CS_Pin, ALT_MISO_GPIO_Port, ALT_MISO_Pin, 1014.9, 100);
+
+/* IMU initialised */
+ImuBmi088Spi imu(&hspi1, IMU_CS1_GPIO_Port, IMU_CS1_Pin, IMU_CS2_GPIO_Port, IMU_CS2_Pin);
+
 
 /* USER CODE END PV */
 
@@ -89,28 +101,10 @@ static void MX_USART3_UART_Init(void);
 int main(void)
 {
 
-  /* USER CODE BEGIN 1 */
-  MX_GPIO_Init();
-
-  /* USER CODE END 1 */
-
-  /* MCU Configuration--------------------------------------------------------*/
-
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
-
-  /* USER CODE BEGIN Init */
-
-  /* USER CODE END Init */
-
-  /* Configure the system clock */
   SystemClock_Config();
 
-  /* USER CODE BEGIN SysInit */
-
-  /* USER CODE END SysInit */
-
-  /* Initialize all configured peripherals */
+  MX_GPIO_Init();
   MX_GPIO_Init();
   MX_ADC1_Init();
   MX_I2C1_Init();
@@ -122,32 +116,80 @@ int main(void)
   MX_TIM3_Init();
   MX_USART1_UART_Init();
   MX_USART3_UART_Init();
-  // MX_USB_DEVICE_Init();
+  MX_USB_DEVICE_Init();
 
   /* USER CODE BEGIN 2 */
-  uint8_t chipID = 0;
-  uint8_t cmd_reset = 0xB6;
-  uint8_t cmd_otp_disable = 0x80;
-  uint16_t devAddr = (0x14); 
-  HAL_StatusTypeDef ret;
 
-  // 1. Perform a Soft Reset (Write 0xB6 to CMD register 0x7E)
-  // This forces the state machine back to the top of your diagram
-  HAL_I2C_Mem_Write(&hi2c1, devAddr, 0x7E, I2C_MEMADD_SIZE_8BIT, &cmd_reset, 1, 100);
-  HAL_Delay(20); // Give it time to reboot
+  /**** SENSOR DATA PACKETS ****/
+  // Memory Data packages
+  volatile MemoryW25q1128jvSpi::AfsTelemetryData afsData;
+  volatile MemoryW25q1128jvSpi::AfsState afsState;
 
-  // 2. Disable OTP access (Write 0x80 to OTP_CMD_REG 0x50)
-  // This moves the chip from "OTP access granted" to "Suspend mode"
-  HAL_I2C_Mem_Write(&hi2c1, devAddr, 0x50, I2C_MEMADD_SIZE_8BIT, &cmd_otp_disable, 1, 100);
-  HAL_Delay(20);
+  // Altimeter data package
+  AltimeterMs5607Spi::Data  altData;
+  AltimeterMs5607Spi::State altState;
 
-  // 3. Now try reading the CHIP_ID (Register 0x00)
-  ret = HAL_I2C_Mem_Read(&hi2c1, devAddr, 0x00, I2C_MEMADD_SIZE_8BIT, &chipID, 1, 100);
+  // GPS data package
+  // UBX_NAV_PVT_PAYLOAD gpsData;
 
-  if (ret == HAL_OK && chipID == 0x33) {
-      HAL_GPIO_WritePin(LED_ARMED_GPIO_Port, LED_ARMED_Pin, GPIO_PIN_SET); // ID Correct!
-  }
+  // IMU data package
+  ImuBmi088Spi::Data imuData;
+
+  // Magnetometer data package
+  // MagBmi150i2c::Data magData;
+
+
+  /**** SENSOR SOFT RESETS ****/
+  volatile int ret = 0;
+  ret = altimeter.Reset();
+
+  // Ensures reset done for all modules
+  HAL_Delay(100);
+
+  /******************** MAIN AFS FIRMWARE LOOP VARIABLES ********************/
+  /* Sensor module initialises */
+  altState = altimeter.Init();
+  HAL_Delay(1000);
   /* USER CODE END 2 */
+
+  /* --- BMM350 Soft Reset Start --- */
+  uint8_t bmm350_cmd_reg = 0x7E;       // Command register address
+  uint8_t bmm350_soft_reset = 0xB6;    // Reset command
+  uint8_t bmm350_nop = 0x00;           // NOP command to follow
+  uint16_t bmm350_i2c_addr = (0x14 << 1); // 7-bit addr 0x14 (ADSEL=GND) shifted for HAL
+
+  // 1. Send 0xB6 to trigger reset
+  if (HAL_I2C_Mem_Write(&hi2c1, bmm350_i2c_addr, bmm350_cmd_reg, I2C_MEMADD_SIZE_8BIT, &bmm350_soft_reset, 1, 100) != HAL_OK) {
+      // Error Handling: Check wiring/pull-ups
+      Error_Handler();
+  }
+
+  // 2. Send 0x00 immediately after
+  if (HAL_I2C_Mem_Write(&hi2c1, bmm350_i2c_addr, bmm350_cmd_reg, I2C_MEMADD_SIZE_8BIT, &bmm350_nop, 1, 100) != HAL_OK) {
+      Error_Handler();
+  }
+
+  // 3. Wait for sensor to reboot (Bosch recommends ~2ms)
+  HAL_Delay(5); 
+  /* --- BMM350 Soft Reset End --- */
+
+  /* --- BMM350 Read Chip ID Start --- */
+  uint8_t bmm350_chip_id_reg = 0x00;    // Register address for CHIP_ID
+  uint8_t bmm350_id_value = 0x00;      // Variable to store the result
+
+  // Read 1 byte from register 0x00
+  if (HAL_I2C_Mem_Read(&hi2c1, bmm350_i2c_addr, bmm350_chip_id_reg, I2C_MEMADD_SIZE_8BIT, &bmm350_id_value, 1, 100) == HAL_OK) {
+      // Check if the ID matches the expected reset value 0x33
+      if (bmm350_id_value == 0x33) {
+          // SUCCESS: Sensor is communicating correctly
+      } else {
+          // ERROR: Wrong ID received (check for bus noise or address conflict)
+      }
+  } else {
+      // I2C ERROR: Sensor not responding (check pull-ups and power)
+  }
+  /* --- BMM350 Read Chip ID End --- */
+
 
 
   /* Infinite loop */
@@ -156,7 +198,17 @@ int main(void)
   {
     /* USER CODE END WHILE */
     HAL_GPIO_TogglePin(LED_STANDBY_GPIO_Port, LED_STANDBY_Pin);
-    HAL_Delay(1000);
+    HAL_GPIO_TogglePin(LED_ARMED_GPIO_Port, LED_ARMED_Pin);
+    HAL_Delay(100);
+
+    /* Altimeter data */
+    altState = altimeter.Read(AltimeterMs5607Spi::Rate::OSR4096);
+    if(altState == AltimeterMs5607Spi::State::COMPLETE)
+    {
+        altData = altimeter.GetData();
+        afsData.temperature = altData.temperature;
+        afsData.altitude    = altData.altitude;
+    }
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

@@ -155,7 +155,7 @@ int main(void)
   HAL_Delay(1000);
   /* USER CODE END 2 */
 
-
+  // MEMORY TEST Device ID
   uint8_t DeviceID[2] = {0x9F, 0x00};
   uint8_t deviceValue[3] = {0xFF,0xFF,0xFF};
   volatile HAL_StatusTypeDef buff;
@@ -165,12 +165,21 @@ int main(void)
   buff = HAL_SPI_Receive(&hspi3, deviceValue, 3, 100);
   HAL_GPIO_WritePin(MEM_CS_GPIO_Port, MEM_CS_Pin, GPIO_PIN_SET); 
 
+
+  // Mag TEST Chip ID
+  uint8_t chipID = 0x00;
+  uint8_t chipIDValue[3] = {0xFF,0xFF,0xFF};
+
+  buff = HAL_I2C_Master_Transmit(&hi2c1, 0x14 << 1, &chipID, 1, 100);
+  buff = HAL_I2C_Master_Receive(&hi2c1, 0x14 << 1, chipIDValue, 3, 100);
+
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
     /* USER CODE END WHILE */
-     HAL_GPIO_TogglePin(LED_STANDBY_GPIO_Port, LED_STANDBY_Pin);
+    HAL_GPIO_TogglePin(LED_STANDBY_GPIO_Port, LED_STANDBY_Pin);
     HAL_GPIO_TogglePin(LED_ARMED_GPIO_Port, LED_ARMED_Pin);
     HAL_Delay(100);
 

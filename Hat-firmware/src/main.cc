@@ -22,6 +22,7 @@
 #include "altimeter_ms5607_spi.h"
 #include "imu_bmi088_spi.h"
 #include "memory_w25q1128jv_spi.h"
+#include "radio_sx127x_spi.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -69,6 +70,11 @@ AltimeterMs5607Spi  altimeter(&hspi2, ALT_CS_GPIO_Port, ALT_CS_Pin, ALT_MISO_GPI
 /* IMU initialised */
 ImuBmi088Spi imu(&hspi1, IMU_CS1_GPIO_Port, IMU_CS1_Pin, IMU_CS2_GPIO_Port, IMU_CS2_Pin);
 
+/* Radio initialised */
+RadioSx127xSpi radio(   &hspi3, RADIO_CS_GPIO_Port, RADIO_CS_Pin, LED_STORAGE_GPIO_Port, LED_STORAGE_Pin, 
+                        0x12, RadioSx127xSpi::RfPort::PA_BOOST, 915000000, 20, RadioSx127xSpi::RampTime::RT40US, 
+                        RadioSx127xSpi::Bandwidth::BW125KHZ, RadioSx127xSpi::CodingRate::CR48, RadioSx127xSpi::SpreadingFactor::SF7, 
+                        8, true, 10023, 10023);
 
 /* USER CODE END PV */
 
@@ -142,6 +148,8 @@ int main(void)
   /**** SENSOR SOFT RESETS ****/
   volatile int ret = 0;
   ret = altimeter.Reset();
+  ret = radio.Reset();
+
   HAL_GPIO_WritePin(MEM_CS_GPIO_Port, MEM_CS_Pin, GPIO_PIN_SET);
   HAL_GPIO_WritePin(MEM_HOLD_GPIO_Port, MEM_HOLD_Pin, GPIO_PIN_SET);
   HAL_GPIO_WritePin(MEM_WP_GPIO_Port, MEM_WP_Pin, GPIO_PIN_SET);
@@ -152,17 +160,18 @@ int main(void)
   /******************** MAIN AFS FIRMWARE LOOP VARIABLES ********************/
   /* Sensor module initialises */
   altState = altimeter.Init();
+  radio.Init();
   HAL_Delay(1000);
   /* USER CODE END 2 */
 
   // MEMORY TEST Device ID
-  uint8_t DeviceID[2] = {0x9F, 0x00};
-  uint8_t deviceValue[3] = {0xFF,0xFF,0xFF};
+  uint8_t memoryDeviceID[2] = {0x9F, 0x00};
+  uint8_t memoryDeviceValue[3] = {0xFF,0xFF,0xFF};
   volatile HAL_StatusTypeDef buff;
 
   HAL_GPIO_WritePin(MEM_CS_GPIO_Port, MEM_CS_Pin, GPIO_PIN_RESET);
-  buff = HAL_SPI_Transmit(&hspi3, DeviceID, 2, 100);
-  buff = HAL_SPI_Receive(&hspi3, deviceValue, 3, 100);
+  buff = HAL_SPI_Transmit(&hspi3, memoryDeviceID, 2, 100);
+  buff = HAL_SPI_Receive(&hspi3, memoryDeviceValue, 3, 100);
   HAL_GPIO_WritePin(MEM_CS_GPIO_Port, MEM_CS_Pin, GPIO_PIN_SET); 
 
 
@@ -173,12 +182,21 @@ int main(void)
   buff = HAL_I2C_Master_Transmit(&hi2c1, 0x14 << 1, &chipID, 1, 100);
   buff = HAL_I2C_Master_Receive(&hi2c1, 0x14 << 1, chipIDValue, 3, 100);
 
+  // RADIO TEST Device ID
+  uint8_t radioDeviceID[2] = {0x42, 0x00};
+  uint8_t radioDeviceValue[10] = {0xFF};
 
+  HAL_GPIO_WritePin(RADIO_CS_GPIO_Port, RADIO_CS_Pin, GPIO_PIN_RESET);
+  buff = HAL_SPI_Transmit(&hspi3, radioDeviceID, 1, 100);
+  buff = HAL_SPI_Receive(&hspi3, radioDeviceValue, 10, 100);
+  HAL_GPIO_WritePin(RADIO_CS_GPIO_Port, RADIO_CS_Pin, GPIO_PIN_SET); 
+
+  //random variables
+  uint8_t memoryBuffer[100];
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
     HAL_GPIO_TogglePin(LED_STANDBY_GPIO_Port, LED_STANDBY_Pin);
     HAL_GPIO_TogglePin(LED_ARMED_GPIO_Port, LED_ARMED_Pin);
     HAL_Delay(100);
@@ -191,9 +209,22 @@ int main(void)
         afsData.temperature = altData.temperature;
         afsData.altitude    = altData.altitude;
     }
-    /* USER CODE BEGIN 3 */
+    
+    /* Radio */
+    // transmit test radio at 915 MHz
+    memset(memoryBuffer, 0x01, sizeof(memoryBuffer));
+
+    if (radio._state == RadioSx127xSpi::State::IDLE || 
+        radio._state == RadioSx127xSpi::State::TX_COMPLETE){
+        // memcpy(memoryBuffer, &data, sizeof(data));
+        radio.Transmit(memoryBuffer, sizeof(memoryBuffer));
+        HAL_GPIO_TogglePin(LED_FLIGHT_GPIO_Port,LED_FLIGHT_Pin);
+    }
+    else if (radio._state == RadioSx127xSpi::State::TX_START ||
+        radio._state == RadioSx127xSpi::State::TX_IN_PROGRESS){
+        radio.Update();
+    }
   }
-  /* USER CODE END 3 */
 }
 
 /**

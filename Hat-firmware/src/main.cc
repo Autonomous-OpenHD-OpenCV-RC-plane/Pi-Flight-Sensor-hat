@@ -142,6 +142,9 @@ int main(void)
   /**** SENSOR SOFT RESETS ****/
   volatile int ret = 0;
   ret = altimeter.Reset();
+  HAL_GPIO_WritePin(MEM_CS_GPIO_Port, MEM_CS_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(MEM_HOLD_GPIO_Port, MEM_HOLD_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(MEM_WP_GPIO_Port, MEM_WP_Pin, GPIO_PIN_SET);
 
   // Ensures reset done for all modules
   HAL_Delay(100);
@@ -152,52 +155,22 @@ int main(void)
   HAL_Delay(1000);
   /* USER CODE END 2 */
 
-  /* --- BMM350 Soft Reset Start --- */
-  uint8_t bmm350_cmd_reg = 0x7E;       // Command register address
-  uint8_t bmm350_soft_reset = 0xB6;    // Reset command
-  uint8_t bmm350_nop = 0x00;           // NOP command to follow
-  uint16_t bmm350_i2c_addr = (0x14 << 1); // 7-bit addr 0x14 (ADSEL=GND) shifted for HAL
 
-  // 1. Send 0xB6 to trigger reset
-  if (HAL_I2C_Mem_Write(&hi2c1, bmm350_i2c_addr, bmm350_cmd_reg, I2C_MEMADD_SIZE_8BIT, &bmm350_soft_reset, 1, 100) != HAL_OK) {
-      // Error Handling: Check wiring/pull-ups
-      Error_Handler();
-  }
+  uint8_t DeviceID[2] = {0x9F, 0x00};
+  uint8_t deviceValue[3] = {0xFF,0xFF,0xFF};
+  volatile HAL_StatusTypeDef buff;
 
-  // 2. Send 0x00 immediately after
-  if (HAL_I2C_Mem_Write(&hi2c1, bmm350_i2c_addr, bmm350_cmd_reg, I2C_MEMADD_SIZE_8BIT, &bmm350_nop, 1, 100) != HAL_OK) {
-      Error_Handler();
-  }
-
-  // 3. Wait for sensor to reboot (Bosch recommends ~2ms)
-  HAL_Delay(5); 
-  /* --- BMM350 Soft Reset End --- */
-
-  /* --- BMM350 Read Chip ID Start --- */
-  uint8_t bmm350_chip_id_reg = 0x00;    // Register address for CHIP_ID
-  uint8_t bmm350_id_value = 0x00;      // Variable to store the result
-
-  // Read 1 byte from register 0x00
-  if (HAL_I2C_Mem_Read(&hi2c1, bmm350_i2c_addr, bmm350_chip_id_reg, I2C_MEMADD_SIZE_8BIT, &bmm350_id_value, 1, 100) == HAL_OK) {
-      // Check if the ID matches the expected reset value 0x33
-      if (bmm350_id_value == 0x33) {
-          // SUCCESS: Sensor is communicating correctly
-      } else {
-          // ERROR: Wrong ID received (check for bus noise or address conflict)
-      }
-  } else {
-      // I2C ERROR: Sensor not responding (check pull-ups and power)
-  }
-  /* --- BMM350 Read Chip ID End --- */
-
-
+  HAL_GPIO_WritePin(MEM_CS_GPIO_Port, MEM_CS_Pin, GPIO_PIN_RESET);
+  buff = HAL_SPI_Transmit(&hspi3, DeviceID, 2, 100);
+  buff = HAL_SPI_Receive(&hspi3, deviceValue, 3, 100);
+  HAL_GPIO_WritePin(MEM_CS_GPIO_Port, MEM_CS_Pin, GPIO_PIN_SET); 
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
     /* USER CODE END WHILE */
-    HAL_GPIO_TogglePin(LED_STANDBY_GPIO_Port, LED_STANDBY_Pin);
+     HAL_GPIO_TogglePin(LED_STANDBY_GPIO_Port, LED_STANDBY_Pin);
     HAL_GPIO_TogglePin(LED_ARMED_GPIO_Port, LED_ARMED_Pin);
     HAL_Delay(100);
 

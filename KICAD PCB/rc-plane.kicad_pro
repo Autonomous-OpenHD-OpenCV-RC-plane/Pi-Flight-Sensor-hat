@@ -760,6 +760,34 @@
     [
       "461d3825-d9c7-45cc-8859-162766f25d73",
       "Buck2"
+    ],
+    [
+      "0d210359-1ffb-4fd8-9b43-6cd3174a5ee2",
+      "Single_Ended_ADC"
+    ],
+    [
+      "2ae0ebd7-de9a-4228-a9b8-fc78c955c603",
+      "Single_Ended_ADC1"
+    ],
+    [
+      "2c0d6a77-0dfc-4938-a80e-692c09d8dd51",
+      "Single_Ended_ADC2"
+    ],
+    [
+      "48985948-a49d-4ea7-836d-adbf135fd802",
+      "Single_Ended_ADC3"
+    ],
+    [
+      "096bb08d-c268-4752-ae8a-15c0eaa320f4",
+      "Single_Ended_ADC4"
+    ],
+    [
+      "e8a76463-2d43-446f-9955-f6819ee28526",
+      "Single_Ended_ADC5"
+    ],
+    [
+      "59254d87-f10b-4431-bc5b-33a8195bfd07",
+      "Differential-ADC"
     ]
   ],
   "text_variables": {}

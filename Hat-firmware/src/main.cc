@@ -32,6 +32,18 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
+// UART inputs from Pi
+#pragma pack(push, 1)
+typedef struct {
+    // uint8_t id = 0xBA;  Every data packet starts with this ID byte
+    int8_t  throttle;   // 0 to 100
+    int8_t  pitch;      // -100 to 100
+    int8_t  roll;       // -100 to 100
+    int8_t  yaw;        // -100 to 100
+    int8_t  flaps;      // 0 to 100
+} RC_Values_t;
+#pragma pack(pop)
+
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -76,6 +88,7 @@ RadioSx127xSpi radio(   &hspi3, RADIO_CS_GPIO_Port, RADIO_CS_Pin, LED_STORAGE_GP
                         RadioSx127xSpi::Bandwidth::BW125KHZ, RadioSx127xSpi::CodingRate::CR48, RadioSx127xSpi::SpreadingFactor::SF7, 
                         8, true, 10023, 10023);
 
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -93,6 +106,39 @@ static void MX_USART1_UART_Init(void);
 static void MX_USART3_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
+#define BUF_SIZE 64  // Larger than the struct to handle multiple packets/jitter
+uint8_t rx_dma_buffer[BUF_SIZE];
+RC_Values_t latestRCValues;
+
+// Call this once in your main initialization
+void Start_RC_Listening(UART_HandleTypeDef *huart) {
+    // Start DMA in circular mode
+    HAL_UART_Receive_DMA(huart, rx_dma_buffer, BUF_SIZE);
+}
+
+// Call this in your main loop to process the buffer
+void Process_RC_Data(void) {
+    for (int i = 0; i < BUF_SIZE; i++) {
+        // Look for the start of the packet
+        if (rx_dma_buffer[i] == 0xBA) {
+            
+            // Check if we have enough bytes left in the buffer to form a full struct
+            // If not, we'd handle the "wrap around" (simplified here for clarity)
+            if (i <= (BUF_SIZE - sizeof(RC_Values_t))) {
+                
+                RC_Values_t *potential_packet = (RC_Values_t *)&rx_dma_buffer[i];
+                
+                // Copy to our "clean" global struct
+                memcpy(&latestRCValues, potential_packet, sizeof(RC_Values_t));
+                
+                // Optional: Clear the ID byte in the buffer so we don't process it twice
+                rx_dma_buffer[i] = 0x00; 
+                
+                break; // Found the latest, move on
+            }
+        }
+    }
+}
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -162,7 +208,11 @@ int main(void)
   altState = altimeter.Init();
   radio.Init();
   HAL_Delay(1000);
-  /* USER CODE END 2 */
+
+  /* Start PWM for the Servos */
+  // HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1); // Elevator
+
+
 
   // MEMORY TEST Device ID
   uint8_t memoryDeviceID[2] = {0x9F, 0x00};
@@ -189,17 +239,68 @@ int main(void)
   HAL_GPIO_WritePin(RADIO_CS_GPIO_Port, RADIO_CS_Pin, GPIO_PIN_RESET);
   buff = HAL_SPI_Transmit(&hspi3, radioDeviceID, 1, 100);
   buff = HAL_SPI_Receive(&hspi3, radioDeviceValue, 10, 100);
-  HAL_GPIO_WritePin(RADIO_CS_GPIO_Port, RADIO_CS_Pin, GPIO_PIN_SET); 
+  HAL_GPIO_WritePin(RADIO_CS_GPIO_Port, RADIO_CS_Pin, GPIO_PIN_SET);
+  
+  // GPS test
+
+  // turn on Servo and Pi Buck converter
+  HAL_GPIO_WritePin(EN_SERVO_GPIO_Port,EN_SERVO_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(EN_PI_GPIO_Port, EN_PI_Pin, GPIO_PIN_SET);
+
+
+  //start PWM for all control surfaces
+  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1); // Elevator
+  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2); // Rudder
+  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3); // Aileron Left
+  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4); // Aileron Right
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2); // Flap left
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3); // Flap right
+
+  // Elevator       DOWN 2050,  UP    950
+  // Rudder         LEFT 1800,  RIGHT 950
+  // Aileron Right  UP 2050,    DOWN  950
+  // Aileron Left   UP 950,     DOWN  2050
+  // Flaps          UP 950,     DOWN  2050
+
+  // start DMA listening from Pi
+  Start_RC_Listening(&huart3);
 
   //random variables
   uint8_t memoryBuffer[100];
+
+  // Buffer variables for PWM
+  int16_t throBuff = 0;
+  int16_t elevBuff = 0;
+  int16_t ruddBuff = 0;
+  int16_t aileBuff = 0;
+  int16_t flapBuff = 0;
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    HAL_GPIO_TogglePin(LED_STANDBY_GPIO_Port, LED_STANDBY_Pin);
-    HAL_GPIO_TogglePin(LED_ARMED_GPIO_Port, LED_ARMED_Pin);
-    HAL_Delay(100);
+    /* Translate servos to PWM values */
+    // thro
+    // Elevator       PITCH UP 2050,    PITCH DOWN 950
+    elevBuff = latestRCValues.pitch * 5.5 + 1500;
+    // Rudder         LEFT 1800,        RIGHT 950
+    ruddBuff = latestRCValues.yaw * 5.5 + 1500;
+    // Aileron Right  UP 2050,          DOWN  950
+    aileBuff = latestRCValues.roll * 5.5 + 1500;
+    // Flaps          UP 950,           DOWN 2050
+    flapBuff = latestRCValues.flaps *5.5 + 1500;
+
+    /* Actuate servos */
+    // Elevator
+    __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, elevBuff);
+    // Rudder
+    __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, ruddBuff);
+    // Ailerons
+    __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, aileBuff);
+    __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, aileBuff);
+    // Flaps
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, flapBuff);
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, flapBuff);
 
     /* Altimeter data */
     altState = altimeter.Read(AltimeterMs5607Spi::Rate::OSR4096);
@@ -218,7 +319,11 @@ int main(void)
         radio._state == RadioSx127xSpi::State::TX_COMPLETE){
         // memcpy(memoryBuffer, &data, sizeof(data));
         radio.Transmit(memoryBuffer, sizeof(memoryBuffer));
+        
+        // toggle LED for sucess!
         HAL_GPIO_TogglePin(LED_FLIGHT_GPIO_Port,LED_FLIGHT_Pin);
+        HAL_GPIO_TogglePin(LED_STANDBY_GPIO_Port, LED_STANDBY_Pin);
+        HAL_GPIO_TogglePin(LED_ARMED_GPIO_Port, LED_ARMED_Pin);
     }
     else if (radio._state == RadioSx127xSpi::State::TX_START ||
         radio._state == RadioSx127xSpi::State::TX_IN_PROGRESS){
@@ -588,8 +693,8 @@ static void MX_TIM2_Init(void)
   {
     Error_Handler();
   }
-  sConfigOC.OCMode = TIM_OCMODE_TIMING;
-  sConfigOC.Pulse = 0;
+  sConfigOC.OCMode = TIM_OCMODE_PWM1; // Change this from TIM_OCMODE_TIMING
+  sConfigOC.Pulse = 1500;             // Start at neutral (1.5ms)
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
   if (HAL_TIM_OC_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
@@ -635,7 +740,7 @@ static void MX_TIM3_Init(void)
 
   /* USER CODE END TIM3_Init 1 */
   htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 71;
+  htim3.Init.Prescaler = 47;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim3.Init.Period = 19999;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -651,7 +756,7 @@ static void MX_TIM3_Init(void)
     Error_Handler();
   }
   sConfigOC.OCMode = TIM_OCMODE_PWM1;
-  sConfigOC.Pulse = 0;
+  sConfigOC.Pulse = 1500;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
   if (HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_2) != HAL_OK)

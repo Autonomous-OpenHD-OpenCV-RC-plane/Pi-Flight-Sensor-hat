@@ -649,7 +649,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "3.9V"
+		(property "Value" "5.2V"
 			(at 57.15 93.345 90)
 			(effects
 				(font
@@ -667,7 +667,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/4849/DS_31_BZT52C2V4LP-BZT52C39LP.pdf"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588918152696225792"
 			(at 54.61 91.44 90)
 			(effects
 				(font
@@ -676,7 +676,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "BZT52C3V6LP-7"
+		(property "Description" "BZX884-B5V6"
 			(at 54.61 91.44 0)
 			(effects
 				(font

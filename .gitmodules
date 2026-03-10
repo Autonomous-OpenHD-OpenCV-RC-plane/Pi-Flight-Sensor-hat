@@ -1,0 +1,12 @@
+[submodule "stm32hal-drivers"]
+	path = stm32hal-drivers
+	url = https://github.com/UCI-Rocket-Project/stm32hal-drivers.git
+[submodule "lib"]
+	path = lib
+	url = https://github.com/UCI-Rocket-Project/stm32hal-drivers.git
+[submodule "stm32_hat_firmware/stm32hal-drivers"]
+	path = stm32_hat_firmware/stm32hal-drivers
+	url = https://github.com/UCI-Rocket-Project/stm32hal-drivers.git
+[submodule "stm32_hat_firmware/rocket-stm32hal-drivers"]
+	path = stm32_hat_firmware/rocket-stm32hal-drivers
+	url = https://github.com/UCI-Rocket-Project/rocket-stm32hal-drivers.git

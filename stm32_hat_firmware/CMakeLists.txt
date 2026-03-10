@@ -38,9 +38,15 @@ add_executable(${CMAKE_PROJECT_NAME})
 add_subdirectory(cmake/stm32cubemx)
 
 ##### ADDED CMAKE CODE
+file(GLOB_RECURSE ALL_DRIVER_SOURCES 
+    "rocket-stm32hal-drivers/*.c"
+    "rocket-stm32hal-drivers/*.cc"
+    "rocket-stm32hal-drivers/*.cpp"
+)
+
 # B. Recursively find all directories that contain .h files
 # (This allows you to include "header.h" directly, even if it's deep in a folder)
-file(GLOB_RECURSE ALL_DRIVER_HEADERS "RocketDrivers/*.h")
+file(GLOB_RECURSE ALL_DRIVER_HEADERS "rocket-stm32hal-drivers/*.h")
 set(ALL_DRIVER_INC_DIRS "")
 foreach(_headerFile ${ALL_DRIVER_HEADERS})
     get_filename_component(_dir ${_headerFile} DIRECTORY)
@@ -50,10 +56,14 @@ list(REMOVE_DUPLICATES ALL_DRIVER_INC_DIRS)
 
 # Add sources to executable
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    # Add user sources here
     ${ALL_DRIVER_SOURCES}
     Core/Src/main.cpp
-    Core/Src/main.c
+)
+
+# Add include paths
+target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
+    # Add user defined include paths
+    ${ALL_DRIVER_INC_DIRS}
 )
 
 # Add include paths
